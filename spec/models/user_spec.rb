@@ -12,7 +12,6 @@ RSpec.describe User, type: :model do
       end
     end
 
-    end
     context '新規登録できない時'
     # ニックネーム
     it 'nicknameが空では登録できない' do
