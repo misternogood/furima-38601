@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_item, only: [:show, :edit, :update]
   before_action :move_to_index, only: [:edit]
 
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path
     else
-      render :new
+      render :edit
     end
   end
 
