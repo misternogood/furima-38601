@@ -13,7 +13,7 @@ class OrderShopper
     validates :city
     validates :addresses 
     validates :phone_number,
-      numericality: only_integer: true
+      numericality: {only_integer: true},
       length: {in: 10..11}
   end
 
