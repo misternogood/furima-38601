@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
-  before_action :authenticate_user!
+  
 
   def index
     @order_shopper = OrderShopper.new
