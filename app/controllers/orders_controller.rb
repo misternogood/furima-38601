@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
+  before_action :authenticate_user!
+
   def index
-    @item = Item.find(params[:item_id])
     @order_shopper = OrderShopper.new
   end
 
@@ -10,8 +13,6 @@ class OrdersController < ApplicationController
       @order_shopper.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
-      @order_shopper = OrderShopper.new
       render :index
     end
   end
@@ -19,5 +20,13 @@ class OrdersController < ApplicationController
   private
   def order_params
     params.require(:order_shopper).permit(:postal_code, :prefecture_id, :city, :addresses, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def move_to_index
+    redirect_to root_path if @item.user_id == current_user.id
   end
 end
