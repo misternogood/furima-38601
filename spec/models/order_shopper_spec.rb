@@ -7,7 +7,7 @@ RSpec.describe OrderShopper, type: :model do
     @order_shopper = FactoryBot.build(:order_shopper, user_id: user.id, item_id: item.id)
     sleep 0.1
   end
-  
+
   describe '購入情報の登録' do
     context '購入情報を正しく入力している場合' do
       it 'すべての値が正しく入力されていれば登録できる' do
