@@ -97,12 +97,6 @@ RSpec.describe OrderShopper, type: :model do
         @order_shopper.valid?
         expect(@order_shopper.errors.full_messages).to include("Token can't be blank")
       end
-
-      it 'priceが空では登録できない' do
-        @order_shopper.price = ''
-        @order_shopper.valid?
-        expect(@order_shopper.errors.full_messages).to include("Price can't be blank")
-      end
     end
   end
 end

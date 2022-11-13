@@ -7,6 +7,5 @@ FactoryBot.define do
     building                 { '柳ビル103' }
     phone_number             { '08012345678' }
     token                    { Payjp.api_key = ENV['PAYJP_SECRET_KEY'] }
-    price                    { 3003 }
   end
 end
